@@ -1,0 +1,433 @@
+@font-face {
+    font-family: 'Salted';
+    src: url('fonts/salted-regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ZenKaku';
+    src: url('fonts/zenkaku-gothic-antique-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #1a1a1a;
+    font-family: 'ZenKaku', sans-serif;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* container */
+.app-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    background-color: #F9F6F0;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* nav bar */
+.top-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 20px 55px 20px; 
+    background: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0) 100%);
+    z-index: 100;
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.top-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'ZenKaku', sans-serif;
+    font-size: 0.58rem; 
+}
+
+.top-nav a:hover {
+    text-decoration: underline;
+}
+
+.nav-logo {
+    font-family: 'Salted', cursive !important;
+    font-size: 0.98rem !important; 
+    text-transform: uppercase;
+    margin-right: 5px;
+}
+
+.hamburger-menu {
+    font-size: 1.15rem; 
+    color: #fff;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+/* ARCHIVE SECTION */
+.section-home {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-image-container {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+
+.hero-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 145px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0) 100%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.hero-img {
+    width: 100%;
+    display: block;
+    filter: saturate(0.7);
+    position: relative;
+    z-index: 1;
+}
+
+/* manifest block */
+.section-manifest {
+    padding: 130px 20px 60px;
+    text-align: center;
+    background-color: #F9F6F0;
+    margin-top: -10px;
+    position: relative;
+    z-index: 2;
+}
+
+.section-manifest h2 {
+    font-family: 'Salted', cursive;
+    font-size: 0.85rem; 
+    letter-spacing: 0.5px; 
+    word-spacing: 1px;
+    color: #000;
+    font-weight: 100; 
+    -webkit-font-smoothing: antialiased; 
+}
+
+/* polaroids container */
+.polaroids-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.polaroid {
+    position: absolute;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.polaroid-combined-pair {
+    position: absolute;
+    top: 185px; 
+    left: 10px;
+    width: 250px; 
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.polaroid-inner {
+    position: relative;
+    width: 100%;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.polaroid-inner img, .combined-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(2px 8px 12px rgba(0,0,0,0.3));
+}
+
+.polaroid-combined-pair p {
+    position: absolute;
+    font-family: 'Salted', cursive;
+    font-size: 1.1rem;
+    color: #000;
+    letter-spacing: 1px;
+}
+
+.label-09 {
+    bottom: 24px;
+    left: 16%; 
+    width: auto;
+    text-align: left;
+    transform: rotate(-8deg);
+}
+
+.label-05 {
+    bottom: 30px; 
+    left: 46%; 
+    width: auto;
+    text-align: left;
+    transform: rotate(6deg);
+}
+
+.p-fracture { 
+    width: 200px;
+    top: 90px; 
+    right: 5px; 
+    transform: rotate(-5deg); 
+}
+
+.p-fracture p {
+    position: absolute;
+    bottom: 25px; 
+    left: 5px; 
+    width: 100%;
+    text-align: center;
+    font-family: 'Salted', cursive;
+    font-size: 0.9rem; 
+    font-weight: 100; 
+    color: rgba(0,0,0,0.8); 
+    -webkit-font-smoothing: antialiased; 
+    transform: rotate(-2.5deg); 
+}
+
+.polaroid-combined-pair:hover { z-index: 50; }
+.polaroid-combined-pair:hover .polaroid-inner { transform: scale(1.05); }
+
+.p-fracture:hover { z-index: 50; }
+.p-fracture:hover .polaroid-inner { transform: scale(1.25); }
+
+
+/* tracklist */
+.section-tracklist {
+    padding: 0 0 60px 0;
+    text-align: center;
+    background-color: #F9F6F0;
+}
+
+.media-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.audio-waves-bg {
+    width: 100%;
+    height: 180px; 
+    background-image: url('images/gradient.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.waves-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    transform: translateY(-16px);
+}
+
+.waves-img {
+    width: 50%;
+    opacity: 0.9;
+}
+
+.mute-btn {
+    width: 10px; 
+    opacity: 0.85;
+}
+
+.cassette-img {
+    width: 75%; 
+    margin-top: -75px; 
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+.tracklist-svg {
+    width: 35%; 
+    display: block;
+    margin: 0 auto;
+}
+
+/* multi-page specific styles */
+.page-tournee { background: linear-gradient(to bottom, #2a2a2a, #F9F6F0 60%); }
+.page-shop { background: linear-gradient(to bottom, #333, #F9F6F0 60%); }
+
+.page-tournee, .page-shop {
+    display: block; 
+    min-height: auto; 
+}
+
+.section-tournee-page, .section-shop-page {
+    padding: 90px 20px 20px 20px;
+    text-align: center;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; 
+    margin-bottom: 30px;
+}
+
+/* BASE STAR PROPERTIES */
+.title-star {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* SHOP PAGE SPECIFIC STAR */
+.page-shop .title-star {
+    height: 40px; 
+    transform: translateY(4px); 
+}
+
+/* TOURNÉE PAGE SPECIFIC STAR */
+.page-tournee .title-star {
+    height: 31px; 
+    transform: translateY(8px); 
+}
+
+.section-title-img {
+    display: block;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+.shop-title {
+    height: 40px;
+}
+
+.tournee-title {
+    height: 45px; 
+}
+
+.notebook-img {
+    width: 115%; 
+    display: block;
+    margin: -65px 3% 0 auto; 
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
+    transform: rotate(0deg); 
+}
+
+/* shop page specifics */
+.shop-polaroids {
+    position: relative;
+    width: 100%;
+    height: 310px; /* CUT LENGTH OF PAGE */
+    margin-top: 0px; /* MOVED POLAROIDS CLOSER TO TITLE */
+}
+
+.page-shop .polaroid {
+    width: 214px; 
+}
+
+.page-shop .polaroid p {
+    position: absolute;
+    bottom: 32px; 
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-family: 'Salted', cursive;
+    font-size: 0.78rem; 
+    color: #000;
+    letter-spacing: 1px;
+    transform: rotate(-2.5deg); 
+    transform-origin: center;
+}
+
+.p-vinyle { top: 60px; left: -60px; transform: rotate(-5deg); }
+.p-tshirt { top: 80px; left: 85px; transform: rotate(3deg); z-index: 15; } 
+.p-cassette { top: 50px; right: -60px; transform: rotate(8deg); z-index: 20; }
+
+.p-vinyle:hover { z-index: 50; }
+.p-vinyle:hover .polaroid-inner { transform: scale(1.15); }
+
+.p-tshirt:hover { z-index: 50; }
+.p-tshirt:hover .polaroid-inner { transform: scale(1.15); }
+
+.p-cassette:hover { z-index: 50; }
+.p-cassette:hover .polaroid-inner { transform: scale(1.15); }
+
+.active-link {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* footer */
+.site-footer {
+    padding: 10px 30px 25px; 
+    text-align: center;
+    background-color: transparent;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: flex-end; 
+    gap: 12px; 
+    margin-bottom: 8px; 
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.footer-links a {
+    font-family: 'ZenKaku', sans-serif;
+    font-size: 0.2rem; 
+    color: #333;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-copy {
+    font-family: 'ZenKaku', sans-serif;
+    font-size: 0.2rem; 
+    color: #999;
+    text-align: left;
+    letter-spacing: 0.2px;
+}
