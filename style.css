@@ -17,10 +17,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }
 
 body {
-    background-color: #1a1a1a;
+    background-color: #f9f6f0; 
     font-family: 'ZenKaku', sans-serif;
     color: #000;
     display: flex;
@@ -29,16 +31,21 @@ body {
     min-height: 100vh;
 }
 
+/* tournee specific dark mauve side bars */
+body.tournee-body {
+    background-color: #120e0e; 
+}
+
 /* container */
 .app-container {
     width: 100%;
-    max-width: 450px;
+    max-width: 100%; 
     margin: 0 auto;
-    background-color: #F9F6F0;
+    background-color: transparent; 
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: none; 
 }
 
 /* nav bar */
@@ -50,7 +57,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 20px 55px 20px; 
+    padding: 25px 5% 55px 5%; 
     background: linear-gradient(to bottom, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0) 100%);
     z-index: 100;
 }
@@ -59,6 +66,7 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex-wrap: wrap;
 }
 
 .top-nav a {
@@ -86,7 +94,7 @@ body {
     margin-left: 5px;
 }
 
-/* ARCHIVE SECTION */
+/* archive section */
 .section-home {
     position: relative;
     width: 100%;
@@ -94,10 +102,16 @@ body {
     flex-direction: column;
 }
 
+/* fixed responsive scaling container ties to screen height to prevent massive zooming */
 .hero-image-container {
     position: relative;
-    width: 100%;
-    z-index: 1;
+    height: 65vh; 
+    max-height: 800px;
+    width: auto;
+    max-width: 100%; 
+    margin: 0 auto;
+    aspect-ratio: 450 / 385; 
+    overflow: visible; 
 }
 
 .hero-image-container::before {
@@ -114,6 +128,9 @@ body {
 
 .hero-img {
     width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: top center;
     display: block;
     filter: saturate(0.7);
     position: relative;
@@ -124,7 +141,6 @@ body {
 .section-manifest {
     padding: 130px 20px 60px;
     text-align: center;
-    background-color: #F9F6F0;
     margin-top: -10px;
     position: relative;
     z-index: 2;
@@ -158,11 +174,12 @@ body {
     z-index: 10;
 }
 
+/* moved straight down to 68 percent */
 .polaroid-combined-pair {
     position: absolute;
-    top: 185px; 
-    left: 10px;
-    width: 250px; 
+    top: 68%; 
+    left: 2%;
+    width: 55%; 
     pointer-events: auto;
     cursor: pointer;
     z-index: 10;
@@ -181,49 +198,12 @@ body {
     filter: drop-shadow(2px 8px 12px rgba(0,0,0,0.3));
 }
 
-.polaroid-combined-pair p {
-    position: absolute;
-    font-family: 'Salted', cursive;
-    font-size: 1.1rem;
-    color: #000;
-    letter-spacing: 1px;
-}
-
-.label-09 {
-    bottom: 24px;
-    left: 16%; 
-    width: auto;
-    text-align: left;
-    transform: rotate(-8deg);
-}
-
-.label-05 {
-    bottom: 30px; 
-    left: 46%; 
-    width: auto;
-    text-align: left;
-    transform: rotate(6deg);
-}
-
+/* moved straight right */
 .p-fracture { 
-    width: 200px;
-    top: 90px; 
-    right: 5px; 
+    width: 44%;
+    top: 23%; 
+    right: -7%; 
     transform: rotate(-5deg); 
-}
-
-.p-fracture p {
-    position: absolute;
-    bottom: 25px; 
-    left: 5px; 
-    width: 100%;
-    text-align: center;
-    font-family: 'Salted', cursive;
-    font-size: 0.9rem; 
-    font-weight: 100; 
-    color: rgba(0,0,0,0.8); 
-    -webkit-font-smoothing: antialiased; 
-    transform: rotate(-2.5deg); 
 }
 
 .polaroid-combined-pair:hover { z-index: 50; }
@@ -237,7 +217,6 @@ body {
 .section-tracklist {
     padding: 0 0 60px 0;
     text-align: center;
-    background-color: #F9F6F0;
 }
 
 .media-container {
@@ -270,6 +249,7 @@ body {
 
 .waves-img {
     width: 50%;
+    max-width: 250px; 
     opacity: 0.9;
 }
 
@@ -280,6 +260,7 @@ body {
 
 .cassette-img {
     width: 75%; 
+    max-width: 350px; 
     margin-top: -75px; 
     margin-bottom: 30px;
     position: relative;
@@ -288,21 +269,48 @@ body {
 
 .tracklist-svg {
     width: 35%; 
+    max-width: 180px; 
     display: block;
     margin: 0 auto;
 }
 
-/* multi-page specific styles */
-.page-tournee { background: linear-gradient(to bottom, #2a2a2a, #F9F6F0 60%); }
-.page-shop { background: linear-gradient(to bottom, #333, #F9F6F0 60%); }
+/* multi page specific styles */
+.page-shop { background: linear-gradient(to bottom, #1e1e1e, #f9f6f0 400px); }
+.page-tournee { background: transparent; }
 
-.page-tournee, .page-shop {
+.page-shop {
     display: block; 
     min-height: auto; 
 }
 
+/* use flexbox to stretch the center column to the footer */
+.page-tournee {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.page-tournee main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* center box for tournee */
+body.tournee-body .section-tournee-page {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #2a2a2a, #f9f6f0 400px);
+    background-color: #f9f6f0;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    flex: 1;
+    padding: 120px 5% 20px 5%;
+    overflow: hidden;
+}
+
 .section-tournee-page, .section-shop-page {
-    padding: 90px 20px 20px 20px;
+    padding: 90px 5% 20px 5%;
     text-align: center;
 }
 
@@ -312,20 +320,22 @@ body {
     align-items: center;
     gap: 15px; 
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
-/* BASE STAR PROPERTIES */
+/* base star properties */
 .title-star {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-/* SHOP PAGE SPECIFIC STAR */
+/* shop page specific star */
 .page-shop .title-star {
-    height: 40px; 
+    height: 30px; 
     transform: translateY(4px); 
+    filter: none;
 }
 
-/* TOURNÉE PAGE SPECIFIC STAR */
+/* tournee page specific star */
 .page-tournee .title-star {
     height: 31px; 
     transform: translateY(8px); 
@@ -336,8 +346,10 @@ body {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
+/* shop title */
 .shop-title {
-    height: 40px;
+    height: 30px;
+    filter: none;
 }
 
 .tournee-title {
@@ -346,50 +358,128 @@ body {
 
 .notebook-img {
     width: 115%; 
+    max-width: 550px; 
     display: block;
-    margin: -65px 3% 0 auto; 
+    margin: -65px auto 0 auto; 
     filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
     transform: rotate(0deg); 
 }
 
-/* shop page specifics */
-.shop-polaroids {
-    position: relative;
+/* tournee specific notebook pushed right to cut off at the container edge */
+body.tournee-body .notebook-img {
+    width: 125%; 
+    max-width: none; 
+    margin: -20px -15% 0 auto; 
+    display: block;
+}
+
+/* new shop list layout vertical flexbox */
+.shop-list {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    margin-top: -15px; 
+    padding: 0 15px 40px 5px; 
     width: 100%;
-    height: 310px; /* CUT LENGTH OF PAGE */
-    margin-top: 0px; /* MOVED POLAROIDS CLOSER TO TITLE */
+    max-width: 750px; 
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.page-shop .polaroid {
-    width: 214px; 
+.shop-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px; 
+    text-align: left;
 }
 
-.page-shop .polaroid p {
+.shop-item-image {
+    width: 55%; 
+    max-width: 330px; 
+    position: relative;
+    cursor: pointer;
+}
+
+.shop-item-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(2px 8px 12px rgba(0,0,0,0.25));
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.shop-item-image:hover img {
+    transform: scale(1.03);
+}
+
+/* hover magic for the jacket */
+.jacket-hover-container {
+    position: relative;
+}
+
+.jacket-back {
     position: absolute;
-    bottom: 32px; 
+    top: 0;
     left: 0;
     width: 100%;
-    text-align: center;
-    font-family: 'Salted', cursive;
-    font-size: 0.78rem; 
-    color: #000;
-    letter-spacing: 1px;
-    transform: rotate(-2.5deg); 
-    transform-origin: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.p-vinyle { top: 60px; left: -60px; transform: rotate(-5deg); }
-.p-tshirt { top: 80px; left: 85px; transform: rotate(3deg); z-index: 15; } 
-.p-cassette { top: 50px; right: -60px; transform: rotate(8deg); z-index: 20; }
+.jacket-hover-container:hover .jacket-back {
+    opacity: 1;
+}
 
-.p-vinyle:hover { z-index: 50; }
-.p-vinyle:hover .polaroid-inner { transform: scale(1.15); }
+/* product text right side */
+.shop-item-details {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
 
-.p-tshirt:hover { z-index: 50; }
-.p-tshirt:hover .polaroid-inner { transform: scale(1.15); }
+.shop-item-details h3 {
+    font-size: 1.6rem; 
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 14px; 
+    letter-spacing: 0.2px;
+}
 
-.p-cassette:hover { z-index: 50; }
-.p-cassette:hover .polaroid-inner { transform: scale(1.15); }
+.shop-item-details .subtitle {
+    font-size: 1.0rem;
+    color: #444; 
+    margin-bottom: 14px; 
+    line-height: 1.4;
+}
+
+.shop-item-details .price {
+    font-size: 0.73rem;
+    font-weight: 500; 
+    color: #111;
+    margin-bottom: 2px; 
+}
+
+.shop-item-details .shipping {
+    font-size: 0.63rem;
+    color: #666; 
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.cart-icon {
+    width: 27px; 
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    filter: none !important; 
+}
+
+.cart-icon:hover {
+    transform: scale(1.15);
+}
+
 
 .active-link {
     text-decoration: underline;
@@ -398,7 +488,7 @@ body {
 
 /* footer */
 .site-footer {
-    padding: 10px 30px 25px; 
+    padding: 10px 5% 25px; 
     text-align: center;
     background-color: transparent;
 }
@@ -406,16 +496,21 @@ body {
 .footer-links {
     display: flex;
     justify-content: flex-end; 
-    gap: 12px; 
+    gap: 30px; 
     margin-bottom: 8px; 
-    padding-bottom: 6px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding-bottom: 16px; 
+    border-bottom: 1px solid rgba(0,0,0,0.3);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
 }
 
+/* footer text fields increased by 50 percent */
 .footer-links a {
     font-family: 'ZenKaku', sans-serif;
-    font-size: 0.2rem; 
-    color: #333;
+    font-size: 0.3rem; 
+    color: #000; 
     text-decoration: none;
     letter-spacing: 0.2px;
 }
@@ -426,8 +521,24 @@ body {
 
 .footer-copy {
     font-family: 'ZenKaku', sans-serif;
-    font-size: 0.2rem; 
+    font-size: 0.3rem; 
     color: #999;
     text-align: left;
     letter-spacing: 0.2px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* invert footer text color on tournee page for legibility on dark mauve */
+body.tournee-body .footer-links a {
+    color: #fff;
+}
+
+body.tournee-body .footer-copy {
+    color: #999;
+}
+
+body.tournee-body .footer-links {
+    border-bottom: 1px solid rgba(255 255 255 0.3);
 }
