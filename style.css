@@ -137,7 +137,7 @@ body.tournee-body {
     z-index: 1;
 }
 
-/* manifest block */
+/* updated manifest styles */
 .section-manifest {
     padding: 130px 20px 60px;
     text-align: center;
@@ -154,16 +154,6 @@ body.tournee-body {
     height: auto;
     display: block;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-}
-
-.section-manifest h2 {
-    font-family: 'Salted', cursive;
-    font-size: 0.85rem; 
-    letter-spacing: 0.5px; 
-    word-spacing: 1px;
-    color: #000;
-    font-weight: 100; 
-    -webkit-font-smoothing: antialiased; 
 }
 
 /* polaroids container */
@@ -184,12 +174,12 @@ body.tournee-body {
     z-index: 10;
 }
 
-/* moved straight down to 68 percent */
+/* combined pair increased by 33 percent from 55 percent to 73 percent width adjusted top position */
 .polaroid-combined-pair {
     position: absolute;
-    top: 68%; 
+    top: 62%; 
     left: 2%;
-    width: 55%; 
+    width: 73%; 
     pointer-events: auto;
     cursor: pointer;
     z-index: 10;
@@ -208,11 +198,11 @@ body.tournee-body {
     filter: drop-shadow(2px 8px 12px rgba(0,0,0,0.3));
 }
 
-/* moved straight right */
+/* fracture polaroid increased by 33 percent from 44 percent to 58.5 percent width adjusted positions */
 .p-fracture { 
-    width: 44%;
-    top: 23%; 
-    right: -7%; 
+    width: 58.5%;
+    top: 15%; 
+    right: -12%; 
     transform: rotate(-5deg); 
 }
 
@@ -248,24 +238,25 @@ body.tournee-body {
     align-items: center;
 }
 
+/* pulled up slightly more to avoid cassette overlap */
 .waves-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     width: 100%;
-    transform: translateY(-16px);
+    transform: translateY(-22px);
 }
 
+/* increased base size for waves */
 .waves-img {
-    width: 50%;
-    max-width: 250px; 
-    opacity: 0.9;
+    width: 65%;
+    max-width: 320px; 
 }
 
+/* doubled size of mute button */
 .mute-btn {
-    width: 10px; 
-    opacity: 0.85;
+    width: 20px; 
 }
 
 .cassette-img {
@@ -288,7 +279,7 @@ body.tournee-body {
 .page-shop { background: linear-gradient(to bottom, #1e1e1e, #f9f6f0 400px); }
 .page-tournee { background: transparent; }
 
-.page-shop {
+.page-tournee, .page-shop {
     display: block; 
     min-height: auto; 
 }
@@ -490,7 +481,6 @@ body.tournee-body .notebook-img {
     transform: scale(1.15);
 }
 
-
 .active-link {
     text-decoration: underline;
     opacity: 0.8;
@@ -516,7 +506,7 @@ body.tournee-body .notebook-img {
     flex-wrap: wrap;
 }
 
-/* footer text fields increased by 50 percent */
+/* footer text fields */
 .footer-links a {
     font-family: 'ZenKaku', sans-serif;
     font-size: 0.3rem; 
@@ -540,7 +530,7 @@ body.tournee-body .notebook-img {
     margin-right: auto;
 }
 
-/* invert footer text color on tournee page for legibility on dark mauve */
+/* invert footer text color on tournee page */
 body.tournee-body .footer-links a {
     color: #fff;
 }
@@ -551,4 +541,32 @@ body.tournee-body .footer-copy {
 
 body.tournee-body .footer-links {
     border-bottom: 1px solid rgba(255 255 255 0.3);
+}
+
+/* increased base opacity for visualizer elements */
+#wave-visual {
+    opacity: 0.65;
+    transition: opacity 0.3s ease;
+}
+
+#mute-toggle {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+/* active playing state full opacity */
+#wave-visual.is-playing {
+    opacity: 1;
+    animation: pulse-wave 1.5s infinite alternate ease-in-out; 
+}
+
+#mute-toggle.is-playing {
+    opacity: 1;
+}
+
+/* the animation keyframes */
+@keyframes pulse-wave {
+    0% { transform: scaleY(0.95); }
+    100% { transform: scaleY(1.05); }
 }
