@@ -102,7 +102,7 @@ body.tournee-body {
     flex-direction: column;
 }
 
-/* fixed responsive scaling container ties to screen height to prevent massive zooming */
+/* fixed responsive scaling container */
 .hero-image-container {
     position: relative;
     height: 65vh; 
@@ -174,7 +174,6 @@ body.tournee-body {
     z-index: 10;
 }
 
-/* combined pair increased by 33 percent from 55 percent to 73 percent width adjusted top position */
 .polaroid-combined-pair {
     position: absolute;
     top: 62%; 
@@ -198,7 +197,6 @@ body.tournee-body {
     filter: drop-shadow(2px 8px 12px rgba(0,0,0,0.3));
 }
 
-/* fracture polaroid increased by 33 percent from 44 percent to 58.5 percent width adjusted positions */
 .p-fracture { 
     width: 58.5%;
     top: 15%; 
@@ -238,7 +236,6 @@ body.tournee-body {
     align-items: center;
 }
 
-/* pulled up slightly more to avoid cassette overlap */
 .waves-content {
     display: flex;
     flex-direction: column;
@@ -248,13 +245,11 @@ body.tournee-body {
     transform: translateY(-22px);
 }
 
-/* increased base size for waves */
 .waves-img {
     width: 65%;
     max-width: 320px; 
 }
 
-/* doubled size of mute button */
 .mute-btn {
     width: 20px; 
 }
@@ -275,6 +270,51 @@ body.tournee-body {
     margin: 0 auto;
 }
 
+/* shop preview section for home page */
+.section-shop-preview {
+    padding: 20px 5% 80px 5%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.shop-preview-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    max-width: 900px;
+}
+
+/* wrapping anchors for the polaroids */
+.preview-polaroid {
+    width: 30%;
+    max-width: 260px;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* slight stagger for the center item */
+.preview-center {
+    transform: translateY(15px);
+}
+
+.preview-polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* enlarge on hover */
+.preview-polaroid:hover img {
+    transform: scale(1.08);
+}
+
 /* multi page specific styles */
 .page-shop { background: linear-gradient(to bottom, #1e1e1e, #f9f6f0 400px); }
 .page-tournee { background: transparent; }
@@ -284,7 +324,6 @@ body.tournee-body {
     min-height: auto; 
 }
 
-/* use flexbox to stretch the center column to the footer */
 .page-tournee {
     display: flex;
     flex-direction: column;
@@ -297,7 +336,6 @@ body.tournee-body {
     flex-direction: column;
 }
 
-/* center box for tournee */
 body.tournee-body .section-tournee-page {
     width: 100%;
     max-width: 450px;
@@ -324,19 +362,16 @@ body.tournee-body .section-tournee-page {
     flex-wrap: wrap;
 }
 
-/* base star properties */
 .title-star {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-/* shop page specific star */
 .page-shop .title-star {
     height: 30px; 
     transform: translateY(4px); 
     filter: none;
 }
 
-/* tournee page specific star */
 .page-tournee .title-star {
     height: 31px; 
     transform: translateY(8px); 
@@ -347,7 +382,6 @@ body.tournee-body .section-tournee-page {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
 }
 
-/* shop title */
 .shop-title {
     height: 30px;
     filter: none;
@@ -366,7 +400,6 @@ body.tournee-body .section-tournee-page {
     transform: rotate(0deg); 
 }
 
-/* tournee specific notebook pushed right to cut off at the container edge */
 body.tournee-body .notebook-img {
     width: 125%; 
     max-width: none; 
@@ -374,7 +407,6 @@ body.tournee-body .notebook-img {
     display: block;
 }
 
-/* new shop list layout vertical flexbox */
 .shop-list {
     display: flex;
     flex-direction: column;
@@ -414,7 +446,6 @@ body.tournee-body .notebook-img {
     transform: scale(1.03);
 }
 
-/* hover magic for the jacket */
 .jacket-hover-container {
     position: relative;
 }
@@ -432,7 +463,6 @@ body.tournee-body .notebook-img {
     opacity: 1;
 }
 
-/* product text right side */
 .shop-item-details {
     flex: 1; 
     display: flex;
@@ -506,7 +536,6 @@ body.tournee-body .notebook-img {
     flex-wrap: wrap;
 }
 
-/* footer text fields */
 .footer-links a {
     font-family: 'ZenKaku', sans-serif;
     font-size: 0.3rem; 
@@ -530,7 +559,6 @@ body.tournee-body .notebook-img {
     margin-right: auto;
 }
 
-/* invert footer text color on tournee page */
 body.tournee-body .footer-links a {
     color: #fff;
 }
@@ -543,7 +571,6 @@ body.tournee-body .footer-links {
     border-bottom: 1px solid rgba(255 255 255 0.3);
 }
 
-/* increased base opacity for visualizer elements */
 #wave-visual {
     opacity: 0.65;
     transition: opacity 0.3s ease;
@@ -555,7 +582,6 @@ body.tournee-body .footer-links {
     cursor: pointer;
 }
 
-/* active playing state full opacity */
 #wave-visual.is-playing {
     opacity: 1;
     animation: pulse-wave 1.5s infinite alternate ease-in-out; 
@@ -565,7 +591,6 @@ body.tournee-body .footer-links {
     opacity: 1;
 }
 
-/* the animation keyframes */
 @keyframes pulse-wave {
     0% { transform: scaleY(0.95); }
     100% { transform: scaleY(1.05); }
